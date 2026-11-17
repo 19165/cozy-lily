@@ -1,0 +1,195 @@
+---
+name: Cozy Anime Side-Panel Companion
+colors:
+  surface: '#f9f9ff'
+  surface-dim: '#d0daf0'
+  surface-bright: '#f9f9ff'
+  surface-container-lowest: '#ffffff'
+  surface-container-low: '#f0f3ff'
+  surface-container: '#e7eeff'
+  surface-container-high: '#dee8ff'
+  surface-container-highest: '#d9e3f9'
+  on-surface: '#121c2c'
+  on-surface-variant: '#504535'
+  inverse-surface: '#273141'
+  inverse-on-surface: '#ebf1ff'
+  outline: '#827563'
+  outline-variant: '#d4c4b0'
+  surface-tint: '#7e5700'
+  primary: '#7e5700'
+  on-primary: '#ffffff'
+  primary-container: '#e5a93c'
+  on-primary-container: '#5e4000'
+  inverse-primary: '#fabc4d'
+  secondary: '#0060ac'
+  on-secondary: '#ffffff'
+  secondary-container: '#68abff'
+  on-secondary-container: '#003e73'
+  tertiary: '#695b5a'
+  on-tertiary: '#ffffff'
+  tertiary-container: '#c2b0ae'
+  on-tertiary-container: '#504342'
+  error: '#ba1a1a'
+  on-error: '#ffffff'
+  error-container: '#ffdad6'
+  on-error-container: '#93000a'
+  primary-fixed: '#ffdead'
+  primary-fixed-dim: '#fabc4d'
+  on-primary-fixed: '#281900'
+  on-primary-fixed-variant: '#604100'
+  secondary-fixed: '#d4e3ff'
+  secondary-fixed-dim: '#a4c9ff'
+  on-secondary-fixed: '#001c39'
+  on-secondary-fixed-variant: '#004883'
+  tertiary-fixed: '#f2dedc'
+  tertiary-fixed-dim: '#d5c2c0'
+  on-tertiary-fixed: '#231918'
+  on-tertiary-fixed-variant: '#514443'
+  background: '#f9f9ff'
+  on-background: '#121c2c'
+  surface-variant: '#d9e3f9'
+typography:
+  headline-lg:
+    fontFamily: Plus Jakarta Sans
+    fontSize: 24px
+    fontWeight: '700'
+    lineHeight: 32px
+    letterSpacing: -0.02em
+  headline-md:
+    fontFamily: Plus Jakarta Sans
+    fontSize: 20px
+    fontWeight: '600'
+    lineHeight: 28px
+    letterSpacing: -0.015em
+  headline-sm:
+    fontFamily: Plus Jakarta Sans
+    fontSize: 16px
+    fontWeight: '600'
+    lineHeight: 24px
+  body-lg:
+    fontFamily: Plus Jakarta Sans
+    fontSize: 15px
+    fontWeight: '400'
+    lineHeight: 22px
+  body-md:
+    fontFamily: Plus Jakarta Sans
+    fontSize: 13px
+    fontWeight: '400'
+    lineHeight: 20px
+  body-sm:
+    fontFamily: Plus Jakarta Sans
+    fontSize: 12px
+    fontWeight: '400'
+    lineHeight: 18px
+  label-lg:
+    fontFamily: Space Grotesk
+    fontSize: 13px
+    fontWeight: '600'
+    lineHeight: 16px
+    letterSpacing: 0.02em
+  label-md:
+    fontFamily: Space Grotesk
+    fontSize: 11px
+    fontWeight: '500'
+    lineHeight: 14px
+    letterSpacing: 0.04em
+  label-sm:
+    fontFamily: Space Grotesk
+    fontSize: 10px
+    fontWeight: '600'
+    lineHeight: 12px
+    letterSpacing: 0.06em
+rounded:
+  sm: 0.5rem
+  DEFAULT: 1rem
+  md: 1.5rem
+  lg: 2rem
+  xl: 3rem
+  full: 9999px
+spacing:
+  gutter: 0.75rem
+  margin: 1rem
+  space-xs: 0.25rem
+  space-sm: 0.5rem
+  space-md: 0.75rem
+  space-lg: 1rem
+  space-xl: 1.5rem
+---
+
+## Brand & Style
+This design system pairs modern Japanese cozy minimalism with ethereal, translucent glassmorphism. Designed specifically for persistent side-panel browser spaces, the interface serves as a calming sanctuary alongside dense, chaotic web browsing.
+
+- **Brand Personality**: Whimsical, serene, attentive, softly disciplined, and heartwarming.
+- **Target Audience**: Creatives, students, knowledge workers, and anime enthusiasts seeking focus without sterile, clinical productivity interfaces.
+- **Emotional Response**: A gentle sigh of relief; feeling accompanied by a quiet, dedicated digital familiar in a bright sunlit studio.
+- **Visual Aesthetic**: Layered frosted glass panels floating above warm ivory backgrounds, illuminated by subtle champagne gold and sky-blue ambient glows, enclosed by delicate micro-borders and pill-form interactions.
+
+## Colors
+The palette evokes a sunlit morning watercolor painting. It balances tactile softness with high legibility for small utility viewports.
+
+- **Canvas & Backgrounds**: The base canvas operates on warm ivory (`#FDF8F0`), transitioning into pure soft cream (`#FFFDF9`) for elevated floating panels.
+- **Primary & Accent (Sunlit Gold)**: Champagne gold (`#E5A93C`) functions as the primary motivator for active progress states, primary action anchors, and focus timer active triggers. Light champagne (`#F4C472`) is reserved for soft hover states and badges.
+- **Secondary (Sky Accent)**: Sky blue (`#4A90E2`) provides crisp contrast for informational markers, completed checks, links, and secondary indicators. Soft sky (`#79B4E8`) acts as an interactive glow color.
+- **Tertiary & Tonal (Rose-Water Glow)**: Gentle blush (`#FCE8E6` and `#FFEFEF`) serves as subtle card surface tints and interactive pill fills.
+- **Neutral (Slate Ink)**: Rather than harsh blacks, typography relies on soft charcoal slate (`#2D3748`) for headers and primary reading, stepping down to muted slate (`#4A5568`) for metadata, timestamps, and secondary captions.
+
+## Typography
+Typography is tuned for compact panel widths (typically 320px–420px). `Plus Jakarta Sans` delivers warm, human geometric curves with open apertures for body text and headers, while `Space Grotesk` introduces a precise, tech-companion character for numeric countdowns, status tags, and metadata counters.
+
+- Keep hierarchy shallow: avoid oversized display fonts that force multi-line wrapping in narrow viewports.
+- Maintain high contrast: body text must never fall below `#4A5568` on frosted or creamy backgrounds to guarantee quick legibility while reading side-by-side with web content.
+- Use uppercase styling exclusively on `label-sm` and `label-md` tokens for micro-trackers and status indicators.
+
+## Layout & Spacing
+The layout adheres to a single-column fluid flow optimized for browser side panels (300px to 480px width) with an 8pt vertical rhythm.
+
+- **Horizontal Rhythm**: Outer margins stay pinned at `1rem` (`16px`) to maximize horizontal real estate. Component gap spacing relies primarily on `space-sm` (`8px`) for tight item listings and `space-md` (`12px`) between modular cards.
+- **Vertical Stack**: Sections (Companion Avatar Card, Focus Timer, Task Deck, Ambient Sound Bar) stack vertically using `space-lg` (`16px`) separations.
+- **Safe Scroll Areas**: Ensure internal panels accommodate thin overlay scrollbars with a static right padding offset of `space-sm` so content never shifts when scroll states engage.
+
+## Elevation & Depth
+Depth in this system relies on Japanese-inspired multi-planar translucency and delicate edge definition rather than heavy drop shadows.
+
+- **Surface Translucency**:
+  - Base Panel: `#FDF8F0` solid background.
+  - Floating Cards: `rgba(255, 253, 249, 0.72)` paired with `backdrop-filter: blur(12px)`.
+  - Elevated Popovers / Modals: `rgba(255, 255, 255, 0.88)` with `backdrop-filter: blur(16px)`.
+- **Border Lighting & Micro-Glow**:
+  - All cards feature a crisp `1px` border using `rgba(255, 255, 255, 0.85)` along the top and sides, softly transitioning to `rgba(229, 169, 60, 0.18)` on the bottom edge to simulate overhead light.
+- **Ambient Shadow**:
+  - Cards carry a dual soft shadow: `0 4px 16px -2px rgba(74, 144, 226, 0.06)` combined with `0 2px 6px 0 rgba(45, 55, 72, 0.03)`.
+
+## Shapes
+Shapes emphasize softness, approachability, and organic warmth. Sharp 90-degree corners are strictly prohibited.
+
+- **Cards & Primary Modules**: Feature generous 16px to 20px radii (`rounded-lg` to `rounded-xl`), creating comfortable, pebble-like interactive zones.
+- **Buttons, Badges, & Chips**: Use true continuous pill geometry (`rounded-full` / 9999px), inviting touch and click interactions with minimal visual friction.
+- **Avatar & Progress Rings**: Maintain circular framing with subtle concentric ring offsets.
+
+## Components
+
+### Buttons
+- **Primary Pill**: Background of `#E5A93C`, text in white `#FFFFFF`, pill shape, padding `8px 18px`. Hover shifts to `#F4C472` with a subtle warm glow (`0 0 12px rgba(229, 169, 60, 0.35)`).
+- **Secondary / Ghost Pill**: Background in `rgba(252, 232, 230, 0.6)`, text in `#2D3748`, `1px` translucent border (`rgba(255, 255, 255, 0.8)`). Hover fills with `rgba(252, 232, 230, 0.9)`.
+- **Icon Actions**: 32x32px circular pill containers with glass background (`rgba(255, 253, 249, 0.8)`), housing slate-toned icons that shift to sky blue (`#4A90E2`) on hover.
+
+### Chips & Tags
+- **Status & Category Chips**: Pill-shaped micro tags (`padding: 2px 10px`), set in `label-sm` with `Space Grotesk`. Active tasks use sky-blue tint (`rgba(74, 144, 226, 0.12)` text `#4A90E2`). Break or rest tags use rose-water tint (`rgba(252, 232, 230, 0.7)` text `#E5A93C`).
+
+### Cards & Glass Panels
+- Built with `rgba(255, 253, 249, 0.75)`, a `1px` translucent border, `16px` border-radius, and `12px` inner padding.
+- Cards maintain distinct roles:
+  - *Companion Card*: Compact showcase for the anime mascot illustration, state quote, and quick affinity score.
+  - *Focus Session Module*: Minimal circular progress track accompanied by an analog-styled numeric readout.
+
+### Form Inputs & Text Fields
+- Seamless pill or `14px` rounded containers filled with `rgba(253, 248, 240, 0.8)`.
+- Inactive border: `1px solid rgba(74, 85, 104, 0.12)`.
+- Focus state: `1px solid #79B4E8` with an ambient glow of `0 0 0 3px rgba(121, 180, 232, 0.22)`. No abrupt layout jump. Placeholder text in `#4A5568` at 60% opacity.
+
+### Checkboxes & Task List Items
+- **List Item**: Horizontally aligned pill-like container with subtle separation (`space-xs`). Inactive items sit on transparent surfaces; hovering reveals a faint ivory-cream highlight (`rgba(255, 255, 255, 0.6)`).
+- **Checkbox**: Smooth 18px rounded squircle or circle with `1.5px` border in `#79B4E8`. Upon completion, transitions with a spring animation to `#4A90E2` fill, displaying a crisp white micro checkmark, and triggers a gentle strike-through with slate opacity reduction.
+
+### Audio & Soundscape Dock
+- Minimal footer bar with soft frosted glass dock styling. Displays discrete micro-sliders for ambient sounds (Rain, Cafe, Tatami breeze) with custom champagne-gold round thumb knobs and track indicators.

@@ -1,0 +1,6 @@
+{
+  "name": "LILY — Cozy Anime Productivity Companion",
+  "description": "A cozy sunlit side-panel companion combining Today's Main Focus, To-do list, ambient soundscape, and Google Calendar schedule.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

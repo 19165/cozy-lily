@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import { CompanionHero } from './CompanionHero';
 import { MainFocusCard } from './MainFocusCard';
 import { TodoWorkspace } from './TodoWorkspace';
@@ -70,7 +71,7 @@ export const SidePanelShell: React.FC<SidePanelShellProps> = ({
   return (
     <aside
       aria-label="LILY Side Panel"
-      className="w-full h-full flex flex-col gap-3 p-4 bg-[#FDF8F0] relative overflow-y-auto cozy-scroll"
+      className="w-full h-full flex flex-col gap-3 p-3.5 bg-[#FDF8F0] relative overflow-y-auto cozy-scroll"
     >
       {/* Subtle sunlit atmospheric ambient washes */}
       <div
@@ -107,32 +108,40 @@ export const SidePanelShell: React.FC<SidePanelShellProps> = ({
       {/* 3. Dual-Tab Workspace: Segmented Switcher + Active Module (FR-05, FR-06, FR-07) */}
       <section
         aria-label="Today's workspace"
-        className="relative z-10 flex-1 flex flex-col rounded-2xl cozy-glass p-3.5 min-h-[290px]"
+        className="relative z-10 flex-1 flex flex-col rounded-2xl cozy-glass p-3 min-h-[300px] border border-white/90 shadow-sm"
       >
         <div
           role="tablist"
           aria-label="Workspace views"
-          className="grid grid-cols-2 gap-1 p-1 rounded-full bg-[#FDF8F0]/90 border border-[#4A5568]/10 mb-3"
+          className="relative grid grid-cols-2 p-1 rounded-full bg-[#FDF8F0]/90 border border-[#4A5568]/12 mb-3"
         >
+          {/* Tab 1: To-do */}
           <button
             type="button"
             role="tab"
             aria-selected={activeTab === 'todo'}
             onClick={() => onChangeTab('todo')}
-            className={`h-9 px-3 rounded-full text-[13px] font-semibold inline-flex items-center justify-center gap-1.5 transition-all duration-200 whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-2 focus-visible:outline-[#4A90E2] ${
+            className={`relative h-9 px-3 rounded-full text-[13px] font-semibold inline-flex items-center justify-center gap-1.5 transition-colors duration-150 whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-2 focus-visible:outline-[#4A90E2] z-10 ${
               activeTab === 'todo'
-                ? 'bg-[#FFFDF9] text-[#2D3748] shadow-[0_2px_6px_rgba(45,55,72,0.06)] border border-[#E5A93C]/25'
+                ? 'text-[#2D3748]'
                 : 'text-[#4A5568] hover:text-[#2D3748]'
             }`}
           >
+            {activeTab === 'todo' && (
+              <motion.div
+                layoutId="activeWorkspaceTabPill"
+                className="absolute inset-0 rounded-full bg-white shadow-[0_2px_8px_rgba(45,55,72,0.08)] border border-[#E5A93C]/35 -z-10"
+                transition={{ type: 'spring', stiffness: 450, damping: 32 }}
+              />
+            )}
             <span>To-do</span>
             {incompleteCount > 0 && (
               <span
                 aria-label={`${incompleteCount} remaining`}
-                className={`font-mono tabular-nums text-[11px] font-semibold px-1.5 py-0.5 rounded-full leading-none ${
+                className={`font-mono tabular-nums text-[11px] font-semibold px-1.5 py-0.5 rounded-full leading-none transition-colors ${
                   activeTab === 'todo'
                     ? 'bg-[#E5A93C]/25 text-[#5E4000]'
-                    : 'bg-[#4A5568]/10 text-[#4A5568]'
+                    : 'bg-[#4A5568]/12 text-[#4A5568]'
                 }`}
               >
                 {incompleteCount}
@@ -140,42 +149,71 @@ export const SidePanelShell: React.FC<SidePanelShellProps> = ({
             )}
           </button>
 
+          {/* Tab 2: Schedule */}
           <button
             type="button"
             role="tab"
             aria-selected={activeTab === 'schedule'}
             onClick={() => onChangeTab('schedule')}
-            className={`h-9 px-3 rounded-full text-[13px] font-semibold inline-flex items-center justify-center gap-1.5 transition-all duration-200 whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-2 focus-visible:outline-[#4A90E2] ${
+            className={`relative h-9 px-3 rounded-full text-[13px] font-semibold inline-flex items-center justify-center gap-1.5 transition-colors duration-150 whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-2 focus-visible:outline-[#4A90E2] z-10 ${
               activeTab === 'schedule'
-                ? 'bg-[#FFFDF9] text-[#2D3748] shadow-[0_2px_6px_rgba(45,55,72,0.06)] border border-[#79B4E8]/35'
+                ? 'text-[#2D3748]'
                 : 'text-[#4A5568] hover:text-[#2D3748]'
             }`}
           >
+            {activeTab === 'schedule' && (
+              <motion.div
+                layoutId="activeWorkspaceTabPill"
+                className="absolute inset-0 rounded-full bg-white shadow-[0_2px_8px_rgba(45,55,72,0.08)] border border-[#79B4E8]/40 -z-10"
+                transition={{ type: 'spring', stiffness: 450, damping: 32 }}
+              />
+            )}
             <span>Schedule</span>
           </button>
         </div>
 
+        {/* Tab Content with AnimatePresence for smooth slide/fade */}
         <div className="flex-1 flex flex-col min-h-0">
-          {activeTab === 'todo' ? (
-            <TodoWorkspace
-              todos={todos}
-              onAddTodo={onAddTodo}
-              onToggleTodo={onToggleTodo}
-              onDeleteTodo={onDeleteTodo}
-            />
-          ) : (
-            <ScheduleWorkspace
-              needsAuth={needsAuth}
-              isLoggingIn={isLoggingIn}
-              userEmail={userEmail}
-              events={calendarEvents}
-              isLoading={calendarLoading}
-              error={calendarError}
-              onSignIn={onSignIn}
-              onSignOut={onSignOut}
-              onRefresh={onRefreshCalendar}
-            />
-          )}
+          <AnimatePresence mode="wait">
+            {activeTab === 'todo' ? (
+              <motion.div
+                key="todo"
+                initial={{ opacity: 0, x: -6 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 6 }}
+                transition={{ duration: 0.16, ease: 'easeOut' }}
+                className="flex-1 flex flex-col h-full"
+              >
+                <TodoWorkspace
+                  todos={todos}
+                  onAddTodo={onAddTodo}
+                  onToggleTodo={onToggleTodo}
+                  onDeleteTodo={onDeleteTodo}
+                />
+              </motion.div>
+            ) : (
+              <motion.div
+                key="schedule"
+                initial={{ opacity: 0, x: 6 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -6 }}
+                transition={{ duration: 0.16, ease: 'easeOut' }}
+                className="flex-1 flex flex-col h-full"
+              >
+                <ScheduleWorkspace
+                  needsAuth={needsAuth}
+                  isLoggingIn={isLoggingIn}
+                  userEmail={userEmail}
+                  events={calendarEvents}
+                  isLoading={calendarLoading}
+                  error={calendarError}
+                  onSignIn={onSignIn}
+                  onSignOut={onSignOut}
+                  onRefresh={onRefreshCalendar}
+                />
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </section>
     </aside>

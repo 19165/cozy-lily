@@ -36,7 +36,7 @@ export const ScheduleWorkspace: React.FC<ScheduleWorkspaceProps> = ({
 
   if (needsAuth) {
     return (
-      <div className="flex flex-col items-center justify-center text-center py-7 px-4 rounded-xl bg-[#FDF8F0]/65 border border-[#4A5568]/10">
+      <div className="flex flex-col items-center justify-center text-center py-7 px-4 rounded-xl bg-[#FDF8F0]/65 border border-[#4A5568]/10 h-full">
         <div className="w-11 h-11 rounded-full bg-[#D4E3FF]/70 flex items-center justify-center mb-3">
           <Calendar className="w-5 h-5 text-[#0060AC]" aria-hidden="true" />
         </div>
@@ -52,7 +52,7 @@ export const ScheduleWorkspace: React.FC<ScheduleWorkspaceProps> = ({
           type="button"
           onClick={onSignIn}
           disabled={isLoggingIn}
-          className="gsi-material-button"
+          className="gsi-material-button shadow-xs"
         >
           <span className="w-[18px] h-[18px] shrink-0" aria-hidden="true">
             <svg
@@ -95,9 +95,9 @@ export const ScheduleWorkspace: React.FC<ScheduleWorkspaceProps> = ({
   return (
     <div className="flex flex-col h-full">
       {/* Connected Header & Refresh Control */}
-      <div className="flex items-center justify-between gap-2 mb-3 pb-2 border-b border-[#4A5568]/10">
+      <div className="flex items-center justify-between gap-2 mb-2.5 pb-2 border-b border-[#4A5568]/10">
         <div className="min-w-0 flex items-center gap-1.5 text-xs text-[#4A5568]">
-          <span className="truncate max-w-[175px]" title={userEmail || undefined}>
+          <span className="truncate max-w-[170px] font-medium" title={userEmail || undefined}>
             {userEmail || 'Google Calendar'}
           </span>
           <span aria-hidden="true">·</span>
@@ -115,7 +115,7 @@ export const ScheduleWorkspace: React.FC<ScheduleWorkspaceProps> = ({
           onClick={onRefresh}
           disabled={isLoading}
           aria-label="Refresh today's schedule"
-          className="inline-flex items-center gap-1.5 px-2.5 h-8 rounded-full bg-[#FDF8F0] hover:bg-[#D4E3FF]/50 border border-[#4A5568]/15 text-xs font-medium text-[#2D3748] hover:text-[#0060AC] transition-colors whitespace-nowrap shrink-0 cursor-pointer disabled:opacity-50 focus-visible:outline-2 focus-visible:outline-[#4A90E2]"
+          className="inline-flex items-center gap-1.5 px-2.5 h-7.5 rounded-full bg-[#FDF8F0] hover:bg-[#D4E3FF]/50 border border-[#4A5568]/15 text-xs font-medium text-[#2D3748] hover:text-[#0060AC] transition-all whitespace-nowrap shrink-0 cursor-pointer disabled:opacity-50 focus-visible:outline-2 focus-visible:outline-[#4A90E2]"
         >
           <RefreshCw
             className={`w-3.5 h-3.5 ${isLoading ? 'animate-spin' : ''}`}
@@ -127,7 +127,7 @@ export const ScheduleWorkspace: React.FC<ScheduleWorkspaceProps> = ({
 
       {/* Error State */}
       {error && (
-        <div className="mb-3 rounded-xl bg-[#FFDAD6]/55 border border-[#BA1A1A]/20 px-3 py-2.5 text-xs text-[#93000A] flex items-center justify-between gap-2">
+        <div className="mb-2.5 rounded-xl bg-[#FFDAD6]/55 border border-[#BA1A1A]/20 px-3 py-2 text-xs text-[#93000A] flex items-center justify-between gap-2">
           <span>{error}</span>
           <button
             type="button"
@@ -141,28 +141,28 @@ export const ScheduleWorkspace: React.FC<ScheduleWorkspaceProps> = ({
 
       {/* Loading Skeleton */}
       {isLoading && events.length === 0 ? (
-        <div className="space-y-2.5 py-1" aria-label="Loading schedule">
+        <div className="space-y-2 py-1" aria-label="Loading schedule">
           {[1, 2, 3].map((row) => (
             <div
               key={row}
-              className="rounded-xl bg-white/60 border border-[#4A5568]/10 px-3 py-3 animate-pulse"
+              className="rounded-xl bg-white/60 border border-[#4A5568]/10 px-3 py-2.5 animate-pulse"
             >
-              <div className="h-3 w-24 bg-[#D9E3F9] rounded mb-2" />
-              <div className="h-3.5 w-48 bg-[#E7EEFF] rounded" />
+              <div className="h-3 w-20 bg-[#D9E3F9] rounded mb-1.5" />
+              <div className="h-3.5 w-40 bg-[#E7EEFF] rounded" />
             </div>
           ))}
         </div>
       ) : events.length === 0 ? (
-        <div className="flex-1 flex flex-col items-center justify-center text-center py-8 px-4 rounded-xl bg-[#FDF8F0]/55 border border-[#4A5568]/10">
+        <div className="flex-1 flex flex-col items-center justify-center text-center py-7 px-4 rounded-xl bg-[#FDF8F0]/55 border border-[#4A5568]/10">
           <Calendar
-            className="w-7 h-7 text-[#79B4E8] mb-2"
+            className="w-6 h-6 text-[#79B4E8] mb-1.5"
             aria-hidden="true"
           />
           <p className="text-[13px] font-semibold text-[#2D3748]">
             No events scheduled today
           </p>
-          <p className="text-xs text-[#4A5568] mt-1 max-w-[235px]">
-            Your calendar is open today—enjoy the uninterrupted focus time.
+          <p className="text-xs text-[#4A5568] mt-0.5 max-w-[235px]">
+            Your calendar is open today—enjoy the peaceful uninterrupted focus time.
           </p>
         </div>
       ) : (
@@ -182,15 +182,15 @@ export const ScheduleWorkspace: React.FC<ScheduleWorkspaceProps> = ({
             return (
               <li
                 key={event.id}
-                className={`rounded-xl px-3 py-2.5 border transition-colors ${
+                className={`rounded-xl px-3 py-2.5 border transition-all ${
                   isHappeningNow
-                    ? 'bg-[#FFFDF9] border-[#4A90E2]/45 shadow-[0_2px_10px_rgba(74,144,226,0.08)]'
+                    ? 'bg-[#FFFDF9] border-[#4A90E2]/50 shadow-[0_2px_12px_rgba(74,144,226,0.12)] ring-1 ring-[#4A90E2]/25'
                     : isPast
-                      ? 'bg-[#FDF8F0]/55 border-[#4A5568]/10 opacity-70'
-                      : 'bg-white/65 border-white/90'
+                      ? 'bg-[#FDF8F0]/55 border-[#4A5568]/10 opacity-65'
+                      : 'bg-white/65 border-white/95 shadow-2xs hover:bg-white/85'
                 }`}
               >
-                <div className="flex items-center justify-between gap-2 mb-0.5">
+                <div className="flex items-center justify-between gap-2 mb-1">
                   <span
                     className={`font-mono tabular-nums text-[11px] font-medium ${
                       isHappeningNow ? 'text-[#0060AC]' : 'text-[#4A5568]'
@@ -200,8 +200,9 @@ export const ScheduleWorkspace: React.FC<ScheduleWorkspaceProps> = ({
                   </span>
 
                   {isHappeningNow && (
-                    <span className="text-[11px] font-semibold text-[#0060AC]">
-                      Happening now
+                    <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-[#0060AC]">
+                      <span className="w-2 h-2 rounded-full bg-[#0060AC] animate-live-pulse" />
+                      <span>Happening now</span>
                     </span>
                   )}
                 </div>
@@ -224,10 +225,10 @@ export const ScheduleWorkspace: React.FC<ScheduleWorkspaceProps> = ({
                 </div>
 
                 {(event.location || event.hangoutLink) && (
-                  <div className="mt-1.5 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] text-[#4A5568]">
+                  <div className="mt-2 flex flex-wrap items-center gap-2 text-[11px] text-[#4A5568]">
                     {event.location && (
-                      <span className="inline-flex items-center gap-1 truncate max-w-[200px]">
-                        <MapPin className="w-3 h-3 shrink-0" aria-hidden="true" />
+                      <span className="inline-flex items-center gap-1 truncate max-w-[190px]">
+                        <MapPin className="w-3 h-3 shrink-0 text-[#7E5700]" aria-hidden="true" />
                         <span className="truncate">{event.location}</span>
                       </span>
                     )}
@@ -236,10 +237,10 @@ export const ScheduleWorkspace: React.FC<ScheduleWorkspaceProps> = ({
                         href={event.hangoutLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 font-medium text-[#0060AC] hover:underline"
+                        className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#0060AC]/10 text-[#0060AC] font-semibold text-[11px] hover:bg-[#0060AC]/20 transition-colors"
                       >
                         <Video className="w-3 h-3 shrink-0" aria-hidden="true" />
-                        <span>Join video call</span>
+                        <span>Join Meet</span>
                       </a>
                     )}
                   </div>
